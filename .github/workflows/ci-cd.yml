@@ -62,7 +62,7 @@ jobs:
       - name: Build ${{ matrix.service }}
         working-directory: ./inventory-management-microservices/${{ matrix.service }}
         run: |
-          chmod +x 
+          chmod +x mvnw
           ./mvnw clean package -DskipTests
       
       - name: Run Tests for ${{ matrix.service }}
