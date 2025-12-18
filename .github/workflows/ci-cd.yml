@@ -86,6 +86,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: List inventory-management-microservices folder
+        run: |
+          ls -la inventory-management-microservices
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
