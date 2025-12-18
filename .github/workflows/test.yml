@@ -1,9 +1,7 @@
 name: test
 
 on:
-  push:
-    branches:
-      - "milestone5"
+  workflow_dispatch:
 
 jobs:
   list:
