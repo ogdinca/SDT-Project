@@ -7,6 +7,10 @@ on:
         description: 'Branch to inspect'
         required: true
         default: 'main'
+      directory:
+        description: 'Directory to list'
+        required: true
+        default: 'inventory-service'
 
 jobs:
   list:
@@ -17,5 +21,5 @@ jobs:
         with:
           ref: ${{ github.event.inputs.branch }}
 
-      - name: List all files and directories
-        run: ls -la
+      - name: List files in directory
+        run: ls -la ${{ github.event.inputs.directory }}
