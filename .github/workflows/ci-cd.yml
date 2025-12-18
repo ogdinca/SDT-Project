@@ -52,13 +52,13 @@ jobs:
             ${{ runner.os }}-maven-
             
       - name: Build ${{ matrix.service }}
-        working-directory: ./${{ matrix.service }}
+        working-directory: ./inventory-management-microservices/${{ matrix.service }}
         run: |
           chmod +x mvnw
           ./mvnw clean package -DskipTests
       
       - name: Run Tests for ${{ matrix.service }}
-        working-directory: ./${{ matrix.service }}
+        working-directory: ./inventory-management-microservices/${{ matrix.service }}
         run: ./mvnw test
       
       - name: Upload Build Artifacts
