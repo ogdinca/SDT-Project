@@ -25,8 +25,15 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven'
-      
+          
+      - name: Cache Maven Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+            
       - name: Build ${{ matrix.service }}
         working-directory: ./inventory-management-microservices/${{ matrix.service }}
         run: |
@@ -85,11 +92,11 @@ jobs:
       
       - name: Save Docker Images
         run: |
-          docker save -o images.tar \
-            eureka-server:latest \
-            inventory-service:latest \
-            notification-service:latest \
-            restocking-service:latest \
+          docker save -o images.tar \\
+            eureka-server:latest \\
+            inventory-service:latest \\
+            notification-service:latest \\
+            restocking-service:latest \\
             api-gateway:latest
       
       - name: Upload Docker Images
