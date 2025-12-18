@@ -19,6 +19,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Show workspace root
+        run: |
+          pwd
+          ls -la
+
       
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -35,13 +41,13 @@ jobs:
             ${{ runner.os }}-maven-
             
       - name: Build ${{ matrix.service }}
-        working-directory: ./inventory-management-microservices/${{ matrix.service }}
+        working-directory: ./${{ matrix.service }}
         run: |
           chmod +x mvnw
           ./mvnw clean package -DskipTests
       
       - name: Run Tests for ${{ matrix.service }}
-        working-directory: ./inventory-management-microservices/${{ matrix.service }}
+        working-directory: ./${{ matrix.service }}
         run: ./mvnw test
       
       - name: Upload Build Artifacts
@@ -116,6 +122,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Debug repository structure
+        run: |
+          echo "Current branch:"
+          git branch --show-current
+
+          echo "Repo root:"
+          ls -la
+
+          echo "inventory-management-microservices:"
+          ls -la inventory-management-microservices || echo "Directory not found"
+
       
       - name: Download Docker Images
         uses: actions/download-artifact@v4
