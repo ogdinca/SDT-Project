@@ -95,7 +95,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       
       - name: Build Eureka Server Image
-        working-directory: ./inventory-management-microservices/eureka-server
+        working-directory: inventory-management-microservices/eureka-server
         run: |
           docker build -t eureka-server:latest -f eureka-server/Dockerfile eureka-server
       
