@@ -19,6 +19,13 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        
+      - name: Debug repo contents
+        run: |
+           echo "Current directory: $(pwd)"
+            ls -la
+           ls -la inventory-management-microservices || echo "Directory inventory-management-microservices not found"
+
 
       - name: Show workspace root
         run: |
