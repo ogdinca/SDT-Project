@@ -7,9 +7,9 @@ on:
     branches: [ milestone5, main ]
 
 jobs:
-  # Job 1: Build and Test
+
   build-and-test:
-    name: Build and Test All Services
+    name: Build and test for all of the microservices
     runs-on: ubuntu-latest
     
     strategy:
@@ -44,7 +44,7 @@ jobs:
           path: inventory-management-microservices/${{ matrix.service }}/target/*.jar
           retention-days: 5
 
-  # Job 2: Docker Build and Push
+
   docker-build:
     name: Build Docker Images
     needs: build-and-test
@@ -99,7 +99,8 @@ jobs:
           path: images.tar
           retention-days: 5
 
-  # Job 3: Integration Tests
+  
+  
   integration-tests:
     name: Run Integration Tests
     needs: docker-build
@@ -162,7 +163,8 @@ jobs:
         working-directory: ./inventory-management-microservices
         run: docker-compose down -v
 
-  # Job 4: Deploy to Local Environment
+  
+  
   deploy:
     name: Deploy to Local Docker Environment
     needs: integration-tests
