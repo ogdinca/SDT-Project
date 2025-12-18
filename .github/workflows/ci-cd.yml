@@ -50,11 +50,19 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
+
+      - name: List files in service directory
+        working-directory: ./inventory-management-microservices/${{ matrix.service }}
+        run: |
+          pwd
+          ls -la
+          ls -la .mvn/wrapper || echo ".mvn/wrapper not found"
+
             
       - name: Build ${{ matrix.service }}
         working-directory: ./inventory-management-microservices/${{ matrix.service }}
         run: |
-          chmod +x mvnw
+          chmod +x 
           ./mvnw clean package -DskipTests
       
       - name: Run Tests for ${{ matrix.service }}
