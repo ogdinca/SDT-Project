@@ -19,12 +19,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          ref: milestone5
         
-      - name: Debug repo contents
+      - name: list
         run: |
-           echo "Current directory: $(pwd)"
+            echo "Current branch:"
+            git branch --show-current
+            echo "Current directory: $(pwd)"
             ls -la
-           ls -la inventory-management-microservices || echo "Directory inventory-management-microservices not found"
+            ls -la inventory-management-microservices || echo "Directory inventory-management-microservices not found"
 
 
       - name: Show workspace root
