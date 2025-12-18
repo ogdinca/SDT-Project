@@ -84,7 +84,7 @@ We will implement **four design patterns** to address key challenges in the syst
 ---
 
 ## **Running the System Using Docker**
-It is very easy to use Docker to run all the services together. First, we assume the eureka server is already running, if not you have to make sure it is. Then:
+It is very easy to use Docker to run all the services together.
 #### **Step 1: Navigate to Project Directory**
 
 ```bash
@@ -107,6 +107,7 @@ This command will:
 Watch the logs. The system is ready when you see:
 
 ```
+eureka-server        | Started EurekaServerApplication
 inventory-service    | Started InventoryServiceApplication
 notification-service | Started NotificationServiceApplication
 restocking-service   | Started RestockingServiceApplication
