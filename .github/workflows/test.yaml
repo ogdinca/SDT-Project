@@ -1,5 +1,16 @@
-Copy
+name: test
+
 on:
   push:
     branches:
       - "milestone5"
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: List all files and directories
+        run: ls -la
