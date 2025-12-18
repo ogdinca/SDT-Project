@@ -83,7 +83,7 @@ We will implement **four design patterns** to address key challenges in the syst
 
 ---
 
-## **Running the System using Docker**
+## **Running the System Using Docker**
 It is very easy to use Docker to run all the services together.
 #### **Step 1: Navigate to Project Directory**
 
