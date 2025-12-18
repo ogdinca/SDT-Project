@@ -79,4 +79,47 @@ We will implement **four design patterns** to address key challenges in the syst
 - Use a factory to generate reservations with time-based constraints.  
 **Advantages Over Simpler Approaches**:  
 - Ensures consistent object creation.  
-- Easier to extend for new item types.  
+- Easier to extend for new item types.
+
+---
+
+## **Running the System using Docker**
+It is very easy to use Docker to run all the services together.
+#### **Step 1: Navigate to Project Directory**
+
+```bash
+cd inventory-management-microservices
+```
+
+#### **Step 2: Build and Start All Services**
+
+```bash
+docker-compose up --build
+```
+
+This command will:
+- Build Docker images for all services
+- Start all containers in the correct order
+- Display logs from all services
+
+#### **Step 3: Wait for Services to Start**
+
+Watch the logs. The system is ready when you see:
+
+```
+eureka-server        | Started EurekaServerApplication
+inventory-service    | Started InventoryServiceApplication
+notification-service | Started NotificationServiceApplication
+restocking-service   | Started RestockingServiceApplication
+api-gateway          | Started ApiGatewayApplication
+```
+
+This typically takes 2-3 minutes for the first run.
+
+#### **Step 4: Verify All Services Are Running**
+
+```bash
+docker-compose ps
+```
+
+Expected output: All services should show `Up` status.
