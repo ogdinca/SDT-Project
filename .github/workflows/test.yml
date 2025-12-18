@@ -2,13 +2,20 @@ name: test
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to inspect'
+        required: true
+        default: 'main'
 
 jobs:
   list:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout selected branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
       - name: List all files and directories
         run: ls -la
